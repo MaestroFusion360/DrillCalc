@@ -1,7 +1,7 @@
 {
   "name": "Drilling Calculator",
   "short_name": "DrillCalc",
-  "description": "Calculation of hole coordinates on a circle",
+  "description": "Calculation of hole coordinates for drilling operations",
   "start_url": "/DrillCalc/",
   "display": "standalone",
   "background_color": "#ffffff",
