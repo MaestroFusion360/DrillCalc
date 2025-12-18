@@ -1,3 +1,6 @@
+<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD045 -->
+
 # Drilling Calculator
 
 A fast and precise **G-code coordinate calculator** for circular and grid hole arrays in CNC programs.  
@@ -55,12 +58,12 @@ Now featuring export-ready **G-code cycles** for G81, G82, G83 and XY only mode.
 
 Supported cycles:
 
-| Cycle | Description           |
-|-------|------------------------|
-| G81   | Drilling               |
+| Cycle | Description                    |
+| :---- | :----------------------------- |
+| G81   | Drilling                       |
 | G82   | Spot Drilling (with dwell `P`) |
-| G83   | Peck Drilling (with `Q` step) |
-| XY    | Pure coordinate output only |
+| G83   | Peck Drilling (with `Q` step)  |
+| XY    | Pure coordinate output only    |
 
 Generated programs include full:
 

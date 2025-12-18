@@ -1,24 +1,24 @@
 define(["exports"], function (t) {
   "use strict";
   try {
-    self["workbox:core:7.2.0"] && _();
+    self["workbox:core:7.3.0"] && _();
   } catch (t) {}
   const e = (t, ...e) => {
     let s = t;
-    return e.length > 0 && (s += ` :: ${JSON.stringify(e)}`), s;
+    return (e.length > 0 && (s += ` :: ${JSON.stringify(e)}`), s);
   };
   class s extends Error {
     constructor(t, s) {
-      super(e(t, s)), (this.name = t), (this.details = s);
+      (super(e(t, s)), (this.name = t), (this.details = s));
     }
   }
   try {
-    self["workbox:routing:7.2.0"] && _();
+    self["workbox:routing:7.3.0"] && _();
   } catch (t) {}
   const n = (t) => (t && "object" == typeof t ? t : { handle: t });
   class i {
     constructor(t, e, s = "GET") {
-      (this.handler = n(e)), (this.match = t), (this.method = s);
+      ((this.handler = n(e)), (this.match = t), (this.method = s));
     }
     setCatchHandler(t) {
       this.catchHandler = n(t);
@@ -33,13 +33,13 @@ define(["exports"], function (t) {
             return s.slice(1);
         },
         e,
-        s
+        s,
       );
     }
   }
   class o {
     constructor() {
-      (this.t = new Map()), (this.i = new Map());
+      ((this.t = new Map()), (this.i = new Map()));
     }
     get routes() {
       return this.t;
@@ -60,10 +60,10 @@ define(["exports"], function (t) {
                 "string" == typeof e && (e = [e]);
                 const s = new Request(...e);
                 return this.handleRequest({ request: s, event: t });
-              })
+              }),
             );
-          t.waitUntil(s),
-            t.ports && t.ports[0] && s.then(() => t.ports[0].postMessage(!0));
+          (t.waitUntil(s),
+            t.ports && t.ports[0] && s.then(() => t.ports[0].postMessage(!0)));
         }
       });
     }
@@ -132,8 +132,8 @@ define(["exports"], function (t) {
       this.o = n(t);
     }
     registerRoute(t) {
-      this.t.has(t.method) || this.t.set(t.method, []),
-        this.t.get(t.method).push(t);
+      (this.t.has(t.method) || this.t.set(t.method, []),
+        this.t.get(t.method).push(t));
     }
     unregisterRoute(t) {
       if (!this.t.has(t.method))
@@ -147,7 +147,8 @@ define(["exports"], function (t) {
   }
   let c;
   const a = () => (
-    c || ((c = new o()), c.addFetchListener(), c.addCacheListener()), c
+    c || ((c = new o()), c.addFetchListener(), c.addCacheListener()),
+    c
   );
   function h(t, e, n) {
     let o;
@@ -165,7 +166,7 @@ define(["exports"], function (t) {
         });
       o = t;
     }
-    return a().registerRoute(o), o;
+    return (a().registerRoute(o), o);
   }
   const u = {
       googleAnalytics: "googleAnalytics",
@@ -180,10 +181,10 @@ define(["exports"], function (t) {
     w = (t) => t || l(u.runtime);
   function d(t, e) {
     const s = e();
-    return t.waitUntil(s), s;
+    return (t.waitUntil(s), s);
   }
   try {
-    self["workbox:precaching:7.2.0"] && _();
+    self["workbox:precaching:7.3.0"] && _();
   } catch (t) {}
   function p(t) {
     if (!t) throw new s("add-to-cache-list-unexpected-type", { entry: t });
@@ -206,7 +207,7 @@ define(["exports"], function (t) {
   }
   class y {
     constructor() {
-      (this.updatedURLs = []),
+      ((this.updatedURLs = []),
         (this.notUpdatedURLs = []),
         (this.handlerWillStart = async ({ request: t, state: e }) => {
           e && (e.originalRequest = t);
@@ -226,17 +227,17 @@ define(["exports"], function (t) {
             s ? this.notUpdatedURLs.push(t) : this.updatedURLs.push(t);
           }
           return s;
-        });
+        }));
     }
   }
   class g {
     constructor({ precacheController: t }) {
-      (this.cacheKeyWillBeUsed = async ({ request: t, params: e }) => {
+      ((this.cacheKeyWillBeUsed = async ({ request: t, params: e }) => {
         const s =
           (null == e ? void 0 : e.cacheKey) || this.h.getCacheKeyForURL(t.url);
         return s ? new Request(s, { headers: t.headers }) : t;
       }),
-        (this.h = t);
+        (this.h = t));
     }
   }
   let R;
@@ -259,7 +260,7 @@ define(["exports"], function (t) {
           const t = new Response("");
           if ("body" in t)
             try {
-              new Response(t.body), (R = !0);
+              (new Response(t.body), (R = !0));
             } catch (t) {
               R = !1;
             }
@@ -279,27 +280,27 @@ define(["exports"], function (t) {
   class q {
     constructor() {
       this.promise = new Promise((t, e) => {
-        (this.resolve = t), (this.reject = e);
+        ((this.resolve = t), (this.reject = e));
       });
     }
   }
   const U = new Set();
   try {
-    self["workbox:strategies:7.2.0"] && _();
+    self["workbox:strategies:7.3.0"] && _();
   } catch (t) {}
   function L(t) {
     return "string" == typeof t ? new Request(t) : t;
   }
   class b {
     constructor(t, e) {
-      (this.u = {}),
+      ((this.u = {}),
         Object.assign(this, e),
         (this.event = e.event),
         (this.l = t),
         (this.p = new q()),
         (this.R = []),
         (this.m = [...t.plugins]),
-        (this.v = new Map());
+        (this.v = new Map()));
       for (const t of this.m) this.v.set(t, {});
       this.event.waitUntil(this.p.promise);
     }
@@ -329,28 +330,28 @@ define(["exports"], function (t) {
         let t;
         t = await fetch(
           n,
-          "navigate" === n.mode ? void 0 : this.l.fetchOptions
+          "navigate" === n.mode ? void 0 : this.l.fetchOptions,
         );
         for (const s of this.iterateCallbacks("fetchDidSucceed"))
           t = await s({ event: e, request: r, response: t });
         return t;
       } catch (t) {
         throw (
-          (i &&
+          i &&
             (await this.runCallbacks("fetchDidFail", {
               error: t,
               event: e,
               originalRequest: i.clone(),
               request: r.clone(),
             })),
-          t)
+          t
         );
       }
     }
     async fetchAndCachePut(t) {
       const e = await this.fetch(t),
         s = e.clone();
-      return this.waitUntil(this.cachePut(t, s)), e;
+      return (this.waitUntil(this.cachePut(t, s)), e);
     }
     async cacheMatch(t) {
       const e = L(t);
@@ -381,7 +382,7 @@ define(["exports"], function (t) {
             ((o = r.url),
             new URL(String(o), location.href).href.replace(
               new RegExp(`^${location.origin}`),
-              ""
+              "",
             )),
         });
       var o;
@@ -406,11 +407,11 @@ define(["exports"], function (t) {
       } catch (t) {
         if (t instanceof Error)
           throw (
-            ("QuotaExceededError" === t.name &&
+            "QuotaExceededError" === t.name &&
               (await (async function () {
                 for (const t of U) await t();
               })()),
-            t)
+            t
           );
       }
       for (const t of this.iterateCallbacks("cacheDidUpdate"))
@@ -434,7 +435,7 @@ define(["exports"], function (t) {
               request: n,
               event: this.event,
               params: this.params,
-            })
+            }),
           );
         this.u[s] = n;
       }
@@ -459,11 +460,16 @@ define(["exports"], function (t) {
         }
     }
     waitUntil(t) {
-      return this.R.push(t), t;
+      return (this.R.push(t), t);
     }
     async doneWaiting() {
-      let t;
-      for (; (t = this.R.shift()); ) await t;
+      for (; this.R.length; ) {
+        const t = this.R.splice(0),
+          e = (await Promise.allSettled(t)).find(
+            (t) => "rejected" === t.status,
+          );
+        if (e) throw e.reason;
+      }
     }
     destroy() {
       this.p.resolve(null);
@@ -483,15 +489,15 @@ define(["exports"], function (t) {
           !e)
         )
           break;
-      return s || (e && 200 !== e.status && (e = void 0)), e;
+      return (s || (e && 200 !== e.status && (e = void 0)), e);
     }
   }
   class C {
     constructor(t = {}) {
-      (this.cacheName = w(t.cacheName)),
+      ((this.cacheName = w(t.cacheName)),
         (this.plugins = t.plugins || []),
         (this.fetchOptions = t.fetchOptions),
-        (this.matchOptions = t.matchOptions);
+        (this.matchOptions = t.matchOptions));
     }
     handle(t) {
       const [e] = this.handleAll(t);
@@ -528,12 +534,12 @@ define(["exports"], function (t) {
         i = await t;
       } catch (r) {}
       try {
-        await e.runCallbacks("handlerDidRespond", {
+        (await e.runCallbacks("handlerDidRespond", {
           event: n,
           request: s,
           response: i,
         }),
-          await e.doneWaiting();
+          await e.doneWaiting());
       } catch (t) {
         t instanceof Error && (r = t);
       }
@@ -552,10 +558,10 @@ define(["exports"], function (t) {
   }
   class E extends C {
     constructor(t = {}) {
-      (t.cacheName = f(t.cacheName)),
+      ((t.cacheName = f(t.cacheName)),
         super(t),
         (this.C = !1 !== t.fallbackToNetwork),
-        this.plugins.push(E.copyRedirectedCacheableResponsesPlugin);
+        this.plugins.push(E.copyRedirectedCacheableResponsesPlugin));
     }
     async _(t, e) {
       const s = await e.cacheMatch(t);
@@ -578,18 +584,18 @@ define(["exports"], function (t) {
         const s = i.integrity,
           r = t.integrity,
           o = !r || r === s;
-        (n = await e.fetch(
-          new Request(t, { integrity: "no-cors" !== t.mode ? r || s : void 0 })
+        ((n = await e.fetch(
+          new Request(t, { integrity: "no-cors" !== t.mode ? r || s : void 0 }),
         )),
           s &&
             o &&
             "no-cors" !== t.mode &&
-            (this.k(), await e.cachePut(t, n.clone()));
+            (this.P(), await e.cachePut(t, n.clone())));
       }
       return n;
     }
     async O(t, e) {
-      this.k();
+      this.P();
       const n = await e.fetch(t);
       if (!(await e.cachePut(t, n.clone())))
         throw new s("bad-precaching-response", {
@@ -598,7 +604,7 @@ define(["exports"], function (t) {
         });
       return n;
     }
-    k() {
+    P() {
       let t = null,
         e = 0;
       for (const [s, n] of this.plugins.entries())
@@ -610,40 +616,40 @@ define(["exports"], function (t) {
         : e > 1 && null !== t && this.plugins.splice(t, 1);
     }
   }
-  (E.defaultPrecacheCacheabilityPlugin = {
+  ((E.defaultPrecacheCacheabilityPlugin = {
     cacheWillUpdate: async ({ response: t }) =>
       !t || t.status >= 400 ? null : t,
   }),
     (E.copyRedirectedCacheableResponsesPlugin = {
       cacheWillUpdate: async ({ response: t }) =>
         t.redirected ? await m(t) : t,
-    });
+    }));
   class O {
     constructor({
       cacheName: t,
       plugins: e = [],
       fallbackToNetwork: s = !0,
     } = {}) {
-      (this.K = new Map()),
-        (this.P = new Map()),
-        (this.T = new Map()),
+      ((this.j = new Map()),
+        (this.k = new Map()),
+        (this.K = new Map()),
         (this.l = new E({
           cacheName: f(t),
           plugins: [...e, new g({ precacheController: this })],
           fallbackToNetwork: s,
         })),
         (this.install = this.install.bind(this)),
-        (this.activate = this.activate.bind(this));
+        (this.activate = this.activate.bind(this)));
     }
     get strategy() {
       return this.l;
     }
     precache(t) {
-      this.addToCacheList(t),
-        this.W ||
+      (this.addToCacheList(t),
+        this.T ||
           (self.addEventListener("install", this.install),
           self.addEventListener("activate", this.activate),
-          (this.W = !0));
+          (this.T = !0)));
     }
     addToCacheList(t) {
       const e = [];
@@ -653,22 +659,20 @@ define(["exports"], function (t) {
           : n && void 0 === n.revision && e.push(n.url);
         const { cacheKey: t, url: i } = p(n),
           r = "string" != typeof n && n.revision ? "reload" : "default";
-        if (this.K.has(i) && this.K.get(i) !== t)
+        if (this.j.has(i) && this.j.get(i) !== t)
           throw new s("add-to-cache-list-conflicting-entries", {
-            firstEntry: this.K.get(i),
+            firstEntry: this.j.get(i),
             secondEntry: t,
           });
         if ("string" != typeof n && n.integrity) {
-          if (this.T.has(t) && this.T.get(t) !== n.integrity)
+          if (this.K.has(t) && this.K.get(t) !== n.integrity)
             throw new s("add-to-cache-list-conflicting-integrities", {
               url: i,
             });
-          this.T.set(t, n.integrity);
+          this.K.set(t, n.integrity);
         }
-        if ((this.K.set(i, t), this.P.set(i, r), e.length > 0)) {
-          const t = `Workbox is precaching URLs without revision info: ${e.join(
-            ", "
-          )}\nThis is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
+        if ((this.j.set(i, t), this.k.set(i, r), e.length > 0)) {
+          const t = `Workbox is precaching URLs without revision info: ${e.join(", ")}\nThis is generally NOT safe. Learn more at https://bit.ly/wb-precache`;
           console.warn(t);
         }
       }
@@ -677,9 +681,9 @@ define(["exports"], function (t) {
       return d(t, async () => {
         const e = new y();
         this.strategy.plugins.push(e);
-        for (const [e, s] of this.K) {
-          const n = this.T.get(s),
-            i = this.P.get(e),
+        for (const [e, s] of this.j) {
+          const n = this.K.get(s),
+            i = this.k.get(e),
             r = new Request(e, {
               integrity: n,
               cache: i,
@@ -690,7 +694,7 @@ define(["exports"], function (t) {
               params: { cacheKey: s },
               request: r,
               event: t,
-            })
+            }),
           );
         }
         const { updatedURLs: s, notUpdatedURLs: n } = e;
@@ -701,24 +705,24 @@ define(["exports"], function (t) {
       return d(t, async () => {
         const t = await self.caches.open(this.strategy.cacheName),
           e = await t.keys(),
-          s = new Set(this.K.values()),
+          s = new Set(this.j.values()),
           n = [];
         for (const i of e) s.has(i.url) || (await t.delete(i), n.push(i.url));
         return { deletedURLs: n };
       });
     }
     getURLsToCacheKeys() {
-      return this.K;
+      return this.j;
     }
     getCachedURLs() {
-      return [...this.K.keys()];
+      return [...this.j.keys()];
     }
     getCacheKeyForURL(t) {
       const e = new URL(t, location.href);
-      return this.K.get(e.href);
+      return this.j.get(e.href);
     }
     getIntegrityForCacheKey(t) {
-      return this.T.get(t);
+      return this.K.get(t);
     }
     async matchPrecache(t) {
       const e = t instanceof Request ? t.url : t,
@@ -739,7 +743,7 @@ define(["exports"], function (t) {
   }
   let x;
   const N = () => (x || (x = new O()), x);
-  class k extends i {
+  class P extends i {
     constructor(t, e) {
       super(({ request: s }) => {
         const n = t.getURLsToCacheKeys();
@@ -750,10 +754,10 @@ define(["exports"], function (t) {
             directoryIndex: s = "index.html",
             cleanURLs: n = !0,
             urlManipulation: i,
-          } = {}
+          } = {},
         ) {
           const r = new URL(t, location.href);
-          (r.hash = ""), yield r.href;
+          ((r.hash = ""), yield r.href);
           const o = (function (t, e = []) {
             for (const s of [...t.searchParams.keys()])
               e.some((t) => t.test(s)) && t.searchParams.delete(s);
@@ -761,11 +765,11 @@ define(["exports"], function (t) {
           })(r, e);
           if ((yield o.href, s && o.pathname.endsWith("/"))) {
             const t = new URL(o.href);
-            (t.pathname += s), yield t.href;
+            ((t.pathname += s), yield t.href);
           }
           if (n) {
             const t = new URL(o.href);
-            (t.pathname += ".html"), yield t.href;
+            ((t.pathname += ".html"), yield t.href);
           }
           if (i) {
             const t = i({ url: r });
@@ -780,11 +784,11 @@ define(["exports"], function (t) {
       }, t.strategy);
     }
   }
-  (t.NavigationRoute = class extends i {
+  ((t.NavigationRoute = class extends i {
     constructor(t, { allowlist: e = [/./], denylist: s = [] } = {}) {
-      super((t) => this.j(t), t), (this.M = e), (this.S = s);
+      (super((t) => this.W(t), t), (this.M = e), (this.S = s));
     }
-    j({ url: t, request: e }) {
+    W({ url: t, request: e }) {
       if (e && "navigate" !== e.mode) return !1;
       const s = t.pathname + t.search;
       for (const t of this.S) if (t.test(s)) return !1;
@@ -798,10 +802,10 @@ define(["exports"], function (t) {
           (async (t, e = "-precache-") => {
             const s = (await self.caches.keys()).filter(
               (s) =>
-                s.includes(e) && s.includes(self.registration.scope) && s !== t
+                s.includes(e) && s.includes(self.registration.scope) && s !== t,
             );
-            return await Promise.all(s.map((t) => self.caches.delete(t))), s;
-          })(e).then((t) => {})
+            return (await Promise.all(s.map((t) => self.caches.delete(t))), s);
+          })(e).then((t) => {}),
         );
       });
     }),
@@ -812,13 +816,13 @@ define(["exports"], function (t) {
       return N().createHandlerBoundToURL(t);
     }),
     (t.precacheAndRoute = function (t, e) {
-      !(function (t) {
+      (!(function (t) {
         N().precache(t);
       })(t),
         (function (t) {
           const e = N();
-          h(new k(e, t));
-        })(e);
+          h(new P(e, t));
+        })(e));
     }),
-    (t.registerRoute = h);
+    (t.registerRoute = h));
 });
